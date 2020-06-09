@@ -18,7 +18,9 @@ const Nav = (props) => {
         {navList.length &&
           navList.map(({ path, text }) => (
             <li key={text}>
-              <NavLink to={path}>{text}</NavLink>
+              <NavLink exact to={path}>
+                {text}
+              </NavLink>
             </li>
           ))}
       </ul>
