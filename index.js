@@ -5,6 +5,7 @@ const { PORT } = require('./config/keys');
 const app = express();
 
 app.use(express.json());
+require('./services/dbConnect')();
 
 app.use('/hey', (req, res) => {
   res.send('Ho!');
