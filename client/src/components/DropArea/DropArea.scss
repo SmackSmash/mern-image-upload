@@ -1,0 +1,36 @@
+@import '../../sass/variables';
+
+.drop-area {
+  width: 100%;
+  min-height: 200px;
+  background-color: $mid-dark-blue;
+  border: solid 20px $mid-blue;
+  margin: 1rem 0;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  transition: border-color 0.3s;
+
+  img {
+    max-width: 100%;
+    min-height: 200px;
+  }
+
+  p {
+    color: $mid-blue;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    transition: color 0.3s;
+    pointer-events: none;
+  }
+
+  &.active {
+    border-color: $mid-light-blue;
+
+    p {
+      color: $mid-light-blue;
+    }
+  }
+}
