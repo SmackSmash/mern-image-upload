@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PageContent from '../../containers/PageContent/PageContent';
 import DropArea from '../../DropArea/DropArea';
+import GalleryImage from '../../GalleryImage/GalleryImage';
 import './Gallery.scss';
 
 const Gallery = (props) => {
@@ -23,11 +24,7 @@ const Gallery = (props) => {
       <DropArea fetchImages={fetchImages} />
       <h2>Image Gallery</h2>
       {images.length ? (
-        images.map(({ _id, path, thumbnail }) => (
-          <a key={_id} href={`http://localhost:8080${path}`}>
-            <img src={thumbnail} alt="preview" />
-          </a>
-        ))
+        images.map((image) => <GalleryImage image={image} key={image._id} />)
       ) : (
         <p>Loading images...</p>
       )}
