@@ -24,7 +24,7 @@ const Gallery = (props) => {
       <h2>Image Gallery</h2>
       {images.length ? (
         images.map(({ _id, path, thumbnail }) => (
-          <a key={_id} href={path}>
+          <a key={_id} href={`http://localhost:8080${path}`}>
             <img src={thumbnail} alt="preview" />
           </a>
         ))
