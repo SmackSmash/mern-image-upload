@@ -7,11 +7,12 @@ import './Gallery.scss';
 const Gallery = (props) => {
   const [images, setImages] = useState([]);
 
+  const fetchImages = async () => {
+    const response = await axios.get('/images');
+    setImages([...response.data]);
+  };
+
   useEffect(() => {
-    const fetchImages = async () => {
-      const response = await axios.get('/images');
-      setImages([...response.data]);
-    };
     fetchImages();
   }, []);
 
@@ -19,10 +20,14 @@ const Gallery = (props) => {
     <PageContent>
       <h1>Gallery Page</h1>
       <h2>Upload An Image</h2>
-      <DropArea />
+      <DropArea fetchImages={fetchImages} />
       <h2>Image Gallery</h2>
       {images.length ? (
-        images.map(({ thumbnail }) => <img key={thumbnail} src={thumbnail} alt="image preview" />)
+        images.map(({ _id, path, thumbnail }) => (
+          <a key={_id} href={path}>
+            <img src={thumbnail} alt="preview" />
+          </a>
+        ))
       ) : (
         <p>Loading images...</p>
       )}

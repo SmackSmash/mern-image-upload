@@ -8,7 +8,7 @@ const sanitizeEvent = (e) => {
   e.stopPropagation();
 };
 
-const DropArea = (props) => {
+const DropArea = ({ fetchImages }) => {
   const [active, setActive] = useState(false);
   const [preview, setPreview] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -59,6 +59,8 @@ const DropArea = (props) => {
         console.error(message);
       }
       setUploading(false);
+      setPreview(null);
+      fetchImages();
     });
   };
 
