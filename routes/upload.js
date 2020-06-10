@@ -9,8 +9,8 @@ const upload = multer({
 });
 
 router.post('/', upload.single('image'), (req, res) => {
-  console.log(req.body.title);
-  res.send('Hello there!');
+  console.log(req.body);
+  res.send({ message: 'Image upload successful' });
 });
 
 module.exports = router;
