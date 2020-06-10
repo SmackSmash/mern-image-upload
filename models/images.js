@@ -7,12 +7,17 @@ const Image = mongoose.model(
     path: {
       type: String,
       required: true
+    },
+    thumbnail: {
+      type: String,
+      required: true
     }
   })
 );
 
 const validateImage = Joi.object().keys({
-  name: Joi.string().required()
+  path: Joi.string().required(),
+  thumbnail: Joi.string().required()
 });
 
 module.exports = {
